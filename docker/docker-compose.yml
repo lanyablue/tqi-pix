@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+
+  postgres-pix:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: pix
+    ports:
+      - "15432:5432"
+    networks:
+      - pix-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "16543:6543"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    depends_on:
+      - postgres-pix
+    networks:
+      - pix-network
+
+networks:
+  pix-network:
+    driver: bridge
