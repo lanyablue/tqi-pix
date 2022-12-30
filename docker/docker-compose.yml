@@ -1,8 +1,9 @@
-version: '3.1'
+version: '3'
 
 services:
 
   postgres-pix:
+    container_name: postgres-pix
     image: postgres
     restart: always
     environment:
@@ -15,12 +16,13 @@ services:
       - pix-network
 
   pgadmin:
+    container_name: pgdockeradmin
     image: dpage/pgadmin4
     restart: always
     ports:
-      - "16543:6543"
+      - "16543:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: "admin"
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
       PGADMIN_DEFAULT_PASSWORD: "admin"
     depends_on:
       - postgres-pix
