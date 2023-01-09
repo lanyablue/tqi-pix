@@ -21,9 +21,9 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private String email;
-    @ManyToOne
+    @OneToMany
     private List<ChavePix> chavesPix;
-    @ManyToOne
+    @OneToMany
     private List<Conta> conta;
 
 

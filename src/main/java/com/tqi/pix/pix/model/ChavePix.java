@@ -1,11 +1,11 @@
 package com.tqi.pix.pix.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,12 +14,10 @@ import java.util.List;
 public class ChavePix {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private List<String> chaves;
-    @OneToMany
+    private String chave;
+    @ManyToOne
     private Pessoa dono;
-    @OneToMany
+    @ManyToOne
     private Conta contaBancaria;
 
 }
