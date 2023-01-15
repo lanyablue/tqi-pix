@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,36 +19,31 @@ public class PessoaController {
     private final PessoaService pessoaService;
 
     @PostMapping
-    public ResponseEntity<PessoaDTO> salvarPessoa(@RequestBody PessoaForm pessoaForm){
-        return new ResponseEntity<>(PessoaMapper.entidadeParaDto(pessoaService.salvar(pessoaForm)), HttpStatus.OK);
+    public ResponseEntity<PessoaDTO> salvarPessoa(@RequestBody PessoaForm pessoaForm) {
+        return new ResponseEntity<>(pessoaService.salvar(pessoaForm), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<PessoaDTO> deletarPessoa(@PathVariable Long id){
-        try {
-            pessoaService.deletar(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException noSuchElementException) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity deletarPessoa(@PathVariable Long id) {
+        pessoaService.deletar(id);
+        return ResponseEntity.ok("");
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<PessoaDTO> atualizarPessoa(@PathVariable Long id,
-                                                     @RequestBody PessoaForm pessoaForm){
+                                                     @RequestBody PessoaForm pessoaForm) {
         return new ResponseEntity<>(PessoaMapper.entidadeParaDto(pessoaService.atualizar(id, pessoaForm)), HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<List<PessoaDTO>> listarTodasAsPessoas (){
+    public ResponseEntity<List<PessoaDTO>> listarTodasAsPessoas() {
         return new ResponseEntity<>(pessoaService.listaDePessoas(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PessoaDTO> detalharPessoa (@PathVariable Long id) {
-        return new ResponseEntity<>(pessoaService.detalharPessoa(id), HttpStatus.OK);
+    public ResponseEntity<PessoaDTO> detalharPessoa(@PathVariable Long id) {
+        return new ResponseEntity<>(pessoaService.detalharPessoaComChavePix(id), HttpStatus.OK);
     }
-
 
 
 }
