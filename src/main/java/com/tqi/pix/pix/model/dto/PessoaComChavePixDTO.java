@@ -12,9 +12,11 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-public class PessoaDTO implements Serializable {
+public class PessoaComChavePixDTO implements Serializable {
 
     private Long id;
     private String nome;
+    private List<ChavePixDTO> chavesPix;
+
 
 }

@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PessoaForm {
+public class ChavePixForm {
 
-    private Long id;
-    private String nome;
-    private String cpf;
-    private String email;
+    private String chave;
+    private Long idPessoa;
+    private String contaCorrente;
+    private String agencia;
+    private String banco;
 
 }

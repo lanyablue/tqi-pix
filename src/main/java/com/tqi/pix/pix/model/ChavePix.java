@@ -1,25 +1,38 @@
 package com.tqi.pix.pix.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-import java.util.List;
+import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Data
+@Builder
+@Getter
+@Setter
+@ToString
 public class ChavePix {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private List<String> chaves;
-    @OneToMany
-    private Pessoa dono;
-    @OneToMany
-    private Conta contaBancaria;
+    private String chave;
+    private Long idPessoa;
+    private String contaCorrente;
+    private String agencia;
+    private String banco;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        ChavePix chavePix = (ChavePix) o;
+        return chave != null && Objects.equals(chave, chavePix.chave);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

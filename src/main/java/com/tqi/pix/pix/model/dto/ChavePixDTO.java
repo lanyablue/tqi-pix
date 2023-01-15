@@ -6,15 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
-public class PessoaDTO implements Serializable {
+@Data
+public class ChavePixDTO implements Serializable {
 
-    private Long id;
-    private String nome;
+    private String chave;
 
 }
