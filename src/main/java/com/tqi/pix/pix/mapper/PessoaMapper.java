@@ -1,7 +1,8 @@
 package com.tqi.pix.pix.mapper;
 
-import com.tqi.pix.pix.model.dto.PessoaDTO;
+import com.tqi.pix.pix.model.dto.PessoaComChavePixDTO;
 import com.tqi.pix.pix.model.Pessoa;
+import com.tqi.pix.pix.model.dto.PessoaDTO;
 import com.tqi.pix.pix.model.form.PessoaForm;
 
 import java.util.List;
@@ -24,14 +25,21 @@ public final class PessoaMapper {
     }
 
     // Para transformar a entidade em dto
-    public static PessoaDTO entidadeParaDto(Pessoa pessoa){
-        return PessoaDTO.builder()
+    public static PessoaComChavePixDTO entidadeParaPessoaComChaveDto(Pessoa pessoa){
+        return PessoaComChavePixDTO.builder()
                 .id(pessoa.getId())
                 .nome(pessoa.getNome())
                 .build();
     }
 
-    public static List<PessoaDTO> listDeEntidadeParaDto(List<Pessoa> pessoas){
-        return pessoas.stream().map(PessoaMapper::entidadeParaDto).toList();
+    public static List<PessoaComChavePixDTO> listDeEntidadeParaDto(List<Pessoa> pessoas){
+        return pessoas.stream().map(PessoaMapper::entidadeParaPessoaComChaveDto).toList();
+    }
+
+    public static PessoaDTO entidadeParaDto(Pessoa pessoa){
+        return PessoaDTO.builder()
+                .id(pessoa.getId())
+                .nome(pessoa.getNome())
+                .build();
     }
 }

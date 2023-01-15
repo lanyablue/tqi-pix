@@ -16,7 +16,5 @@ public class PessoaDTO implements Serializable {
 
     private Long id;
     private String nome;
-    private List<ChavePixDTO> chavesPix;
-
 
 }

@@ -15,7 +15,9 @@ public class PixMapper {
         return ChavePix.builder()
                 .chave(chavePixForm.getChave())
                 .idPessoa(chavePixForm.getIdPessoa())
-
+                .contaCorrente(chavePixForm.getContaCorrente())
+                .agencia(chavePixForm.getAgencia())
+                .banco(chavePixForm.getBanco())
                 .build();
     }
 
@@ -33,6 +35,4 @@ public class PixMapper {
                 .banco(chavePix.getBanco())
                 .build();
     }
-
-
 }
