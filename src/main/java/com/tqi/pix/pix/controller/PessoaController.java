@@ -19,31 +19,28 @@ public class PessoaController {
     private final PessoaService pessoaService;
 
     @PostMapping
-    public ResponseEntity<PessoaComChavePixDTO> salvarPessoa(@RequestBody PessoaForm pessoaForm) {
-        return new ResponseEntity<>(pessoaService.salvar(pessoaForm), HttpStatus.OK);
+    public PessoaComChavePixDTO salvarPessoa(@RequestBody PessoaForm pessoaForm) {
+        return pessoaService.salvar(pessoaForm);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletarPessoa(@PathVariable Long id) {
+    public void deletarPessoa(@PathVariable Long id) {
         pessoaService.deletar(id);
-        return ResponseEntity.ok("");
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaComChavePixDTO> atualizarPessoa(@PathVariable Long id,
+    public PessoaComChavePixDTO atualizarPessoa(@PathVariable Long id,
                                                                 @RequestBody PessoaForm pessoaForm) {
-        return new ResponseEntity<>(PessoaMapper.entidadeParaPessoaComChaveDto(pessoaService.atualizar(id, pessoaForm)), HttpStatus.OK);
+        return PessoaMapper.entidadeParaPessoaComChaveDto(pessoaService.atualizar(id, pessoaForm));
     }
 
     @GetMapping
-    public ResponseEntity<List<PessoaComChavePixDTO>> listarTodasAsPessoas() {
-        return new ResponseEntity<>(pessoaService.listaDePessoas(), HttpStatus.OK);
+    public List<PessoaComChavePixDTO> listarTodasAsPessoas() {
+        return pessoaService.listaDePessoas();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PessoaComChavePixDTO> detalharPessoa(@PathVariable Long id) {
-        return new ResponseEntity<>(pessoaService.detalharPessoaComChavePix(id), HttpStatus.OK);
+    public PessoaComChavePixDTO detalharPessoa(@PathVariable Long id) {
+        return pessoaService.detalharPessoaComChavePix(id);
     }
-
-
 }
