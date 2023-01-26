@@ -52,7 +52,7 @@ public class PixService {
         }
     }
 
-    public ChavePixCompletaDTO recuperarPorChave(String chave) {
+    public ChavePixCompletaDTO recuperarPorChave(String chave) {  //mapear cc, agencia, banco
         return chavePixRepository.findByChave(chave)
                 .map(chavePix ->
                      ChavePixCompletaDTO.builder()
