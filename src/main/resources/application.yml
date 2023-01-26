@@ -1,0 +1,15 @@
+server:
+  port: 8090
+spring:
+  flyway:
+    locations: "db/migration"
+  datasource:
+    url: jdbc:postgresql://localhost:15432/pix
+    username: root
+    password: 123456
+  jackson:
+    #default-property-inclusion: non_null
+
+
+
+
