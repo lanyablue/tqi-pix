@@ -23,8 +23,8 @@ public class PixController {
         return pixService.criarChavePix(chavePixForm);
     }
 
-    @GetMapping("/pessoa")
-    public List<ChavePixDTO> recuperarChavesPorIdPessoa(@PathParam("idPessoa") Long idPessoa) {
+    @GetMapping("/pessoa/{idPessoa}")
+    public List<ChavePixDTO> recuperarChavesPorIdPessoa(@PathVariable Long idPessoa) {
         return pixService.recuperarPorIdPessoa(idPessoa);
     }
 
@@ -43,7 +43,7 @@ public class PixController {
         pixService.deletar(chave);
     }
 
-    @PatchMapping
+    @PatchMapping("/{chave}")
     public ChavePixCompletaDTO atualizar(@RequestBody ChavePixForm chavePixForm){
         return pixService.atualizar(chavePixForm);
     }
